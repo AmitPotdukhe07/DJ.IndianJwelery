@@ -1,57 +1,70 @@
 import React from 'react';
 import CarouselComponent from '../components/CarouselComponent';
 import CardList from '../components/CardList';
-import { Container, Box, Grid, Typography } from '@mui/material';
-import { StyledButton, StyledTextField } from '../style';
+import { Container, Box, Grid, Typography, Input } from '@mui/material';
+import { StyledButton, StyledButton1, StyledTextField } from '../style';
 import { Stack } from '@mui/system';
 import CardList2 from '../components/CardList2';
 import { CardList3 } from '../components/CardList3';
-
 function HomeScreen() {
     return (
         <div>
             <Box mt={0}>
                 <CarouselComponent />
             </Box>
-            <Grid container
-                direction="column"
-                justifyContent="center"
-                alignItems="center" sx={{ marginTop: "10px" }}>
-                <Grid container direction="row"
+            <div className='container'>
+                <Grid container
+                    direction="column"
                     justifyContent="center"
-                    alignItems="center">
-                    <Stack direction="row">
-                        <StyledTextField sx={{ width: 600, height: 50 }} label="Search for product"></StyledTextField>
-                        <StyledButton>Search</StyledButton>
-                    </Stack>
-                    <Box mt={1}>
-                        <CardList />
-                    </Box>
-                </Grid>
-                <Container sx={{ m: 2 }}>
-                    <Grid container alignItems='center' justifyContent='space-between'>
-                        <Grid item>
-                            <img src="https://indiajewelleryhub.com/assets/images/patterns/pattern7-left.png" alt="" style={{ width: '20vw' }} />
+                    alignItems="center" sx={{ marginTop: "3vh" }}>
+
+                    <Grid container direction="row"
+                        justifyContent="center"
+                        alignItems="center">
+
+                        <Grid item >
+                            <Input id="filled-basic" placeholder="Search for product" variant="filled" sx={{ width: 600, borderTop: '1px solid grey', borderLeft: '1px solid grey', borderRight: '1px solid grey', padding: '5px', marginRight: '10px' }}></Input>
                         </Grid>
-                        <Grid item><Typography variant='h4' style={{ overflowY: 'hidden' }}>Featured Members</Typography></Grid>
-                        <Grid item>
-                            <img src="https://indiajewelleryhub.com/assets/images/patterns/pattern7-left.png" alt="" style={{ width: '20vw' }} />
+
+                        <Grid item >
+                            <StyledButton1>Search</StyledButton1>
                         </Grid>
+                        <Box mt={1}>
+                            <CardList />
+                        </Box>
+
                     </Grid>
-                </Container>
-                <CardList2 />
 
-                <Container style={{
-                    position: 'relative',
-                    height: '1px',
-                    width: '100%',
-                    background: '#a59a5e',
-                    margin: '20px 0 20px 0'
-                }}></Container>
+                    <div style={{ margin: "50px 0" }}>
+                        <Grid container alignItems='center' justifyContent='space-between' style={{ height: '10vh' }}>
+                            <Grid item >
+                                <img src="https://indiajewelleryhub.com/assets/images/patterns/pattern7-left.png" alt="" style={{ width: '20vw', height: 'fit-content' }} />
+                            </Grid>
+                            <Grid item><Typography variant='h3' style={{ overflowY: 'hidden', fontWeight: 800, color: '#3f4042' }}>Featured Members</Typography></Grid>
+                            <Grid item>
+                                <img src="https://indiajewelleryhub.com/assets/images/patterns/pattern7-left.png" alt="" style={{ width: '20vw', height: 'fit-content' }} />
+                            </Grid>
+                        </Grid>
+                    </div>
+                    <CardList2 />
 
-                <CardList3 />
-            </Grid>
-        </div>
+                    <div style={{ display: 'flex', flexDirection: 'row', width: '100%', alignItems: 'center', margin: '5vh 0' }}>
+                        <img style={{ height: '30px', marginRight: '-5px' }} src="https://indiajewelleryhub.com/assets/images/star.png" alt="" />
+                        <div style={{
+                            position: 'relative',
+                            height: '3px',
+                            width: '100%',
+                            background: '#a59a5e',
+                            margin: '20px 0 20px 0'
+                        }}>
+                        </div>
+                        <img style={{ height: '30px', marginLeft: '-5px' }} src="https://indiajewelleryhub.com/assets/images/star.png" alt="" />
+                    </div>
+
+                    <CardList3 />
+                </Grid>
+            </div>
+        </div >
     );
 }
 
