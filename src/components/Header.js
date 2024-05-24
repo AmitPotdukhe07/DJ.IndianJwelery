@@ -41,6 +41,57 @@ const RegisterForm = React.memo(({ open, handleClose, handleOpenLogin }) => {
     const [designation, setDesignation] = useState("");
     const [city, setCity] = useState("");
 
+    const handleRegister = () => {
+        try {
+            axios.post("/api/v1/user/signup", { name, email, password: password, company, designation, city })
+                .then((response) => {
+                    console.log(response);
+                    if (response.data.success) {
+                        Cookies.set("auth", response.data.token, { expires: 7 });
+                        handleClose();
+                        Swal.fire({
+                            position: "center",
+                            icon: "success",
+                            title: "Signup successful",
+                            showConfirmButton: false,
+                            timer: 2000,
+                        }).then(() => {
+
+                            handleOpenLogin();
+                        });
+                    } else {
+                        handleClose();
+                        Swal.fire({
+                            position: "center",
+                            icon: "error",
+                            title: `Signup failed : ${response.data.msg}`,
+                            showConfirmButton: false,
+                            timer: 2000,
+                        });
+                    }
+                })
+                .catch((err) => {
+                    handleClose();
+                    Swal.fire({
+                        position: "center",
+                        icon: "error",
+                        title: "Signup failed",
+                        showConfirmButton: false,
+                        timer: 1500,
+                    });
+                });
+        } catch (error) {
+            handleClose();
+            Swal.fire({
+                position: "center",
+                icon: "error",
+                title: error,
+                showConfirmButton: false,
+                timer: 1500,
+            });
+        }
+    }
+
     return (
         <Dialog open={open} onClose={handleClose}>
             <DialogTitle>Create account</DialogTitle>
@@ -90,7 +141,7 @@ const RegisterForm = React.memo(({ open, handleClose, handleOpenLogin }) => {
                         <MenuItem value={2}>Country 2</MenuItem>
                     </Select>
                 </StyledFormControl>
-                <StyledButton1 fullWidth onClick={handleClose}>Create Account</StyledButton1>
+                <StyledButton1 fullWidth onClick={handleRegister}>Create Account</StyledButton1>
                 <StyledLink onClick={() => { handleClose(); handleOpenLogin(); }}>Already signed up? Login here.</StyledLink>
             </StyledDialogContent>
         </Dialog>
@@ -131,6 +182,7 @@ const Header = () => {
     const [openLogin, setOpenLogin] = useState(false);
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [showUploadBtn, setShowUploadBtn] = useState(false);
 
     const handleOpenRegister = useCallback(() => setOpenRegister(true), []);
     const handleCloseRegister = useCallback(() => setOpenRegister(false), []);
@@ -163,13 +215,13 @@ const Header = () => {
                             showConfirmButton: false,
                             timer: 2000,
                         }).then(() => {
+                            setShowUploadBtn(true)
                             navigate("/search");
                         });
                         setOpenLogin(false);
                         setShowLogin(false);
                         return;
                     } else {
-                        console.log("in else login");
                         Swal.fire({
                             position: "center",
                             icon: "error",
@@ -180,7 +232,6 @@ const Header = () => {
                     }
                 })
                 .catch((err) => {
-                    console.log("in el ");
                     setOpenLogin(false);
                     Swal.fire({
                         position: "center",
@@ -226,6 +277,10 @@ const Header = () => {
                 </Typography>
                 {
                     showLogin && <StyledButton color="headerColor" onClick={handleOpenLogin}>Login</StyledButton>
+                }
+
+                {
+                    showUploadBtn && <StyledButton color="headerColor" onClick={() => { navigate('/upload') }}>Upload Data</StyledButton>
                 }
             </StyleToolBar>
         </AppBar>

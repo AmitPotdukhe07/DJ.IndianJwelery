@@ -6,10 +6,11 @@ import { StyledButton, StyledButton1, StyledTextField } from '../style';
 import { Stack } from '@mui/system';
 import CardList2 from '../components/CardList2';
 import { CardList3 } from '../components/CardList3';
-
+import { useNavigate } from 'react-router-dom';
 
 
 function HomeScreen() {
+    const navigate = useNavigate()
     return (
         <div style={{ overflowX: "hidden" }}>
             <Box mt={0}>
@@ -30,7 +31,7 @@ function HomeScreen() {
                         </Grid>
 
                         <Grid item >
-                            <StyledButton1>Search</StyledButton1>
+                            <StyledButton1 onClick={() => { navigate('/search') }}>Search</StyledButton1>
                         </Grid>
                         <Box mt={1}>
                             <CardList />
