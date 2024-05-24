@@ -5,6 +5,8 @@ import HomeScreen from './screens/HomeScreen';
 import Footer from './components/Footer';
 import { SearchScreen } from './screens/SearchScreen';
 import "./style.css"
+import ProductScreen from './screens/ProductScreen';
+import UploadExcel from './screens/UploadExcel';
 function App() {
   return (
     <div>
@@ -13,6 +15,8 @@ function App() {
       <Routes>
         <Route path="/" element={<HomeScreen />} />
         <Route path="/search" element={<SearchScreen />} />
+        <Route path="/product/:id" element={<ProductScreen />} />
+        <Route path="/upload" element={<UploadExcel />} />
       </Routes>
       <Footer />
     </div>

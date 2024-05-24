@@ -1,6 +1,6 @@
 import React from 'react';
 import { Card, CardContent, CardMedia, Typography, Grid, Box } from '@mui/material';
-
+import {useNavigate} from 'react-router-dom'
 const cardData = [
     {
         logo: 'https://gjepc.s3.ap-south-1.amazonaws.com/9df7d0b6-d79b-4762-b0e3-8e2fbfac15d5',
@@ -18,11 +18,13 @@ const cardData = [
     }
 ];
 
-const ResponsiveCard = ({ frontImage, name, products, exportMarkets, location }) => {
+const ResponsiveCard = ({ _id,frontImage, name, products, exportMarkets, location }) => {
+    const navigate = useNavigate()
     // { frontImage, name, products, exportMarkets, location }
     console.log(products, name)
     return (
-        <Card sx={{ margin: 2, display: 'flex', flexDirection: { xs: 'column', sm: 'row', border: '2px solid #a59e65', maxHeight: '28vh' } }}>
+        
+        <Card sx={{ margin: 2, display: 'flex', flexDirection: { xs: 'column', sm: 'row', border: '2px solid #a59e65', maxHeight: '28vh' } }} onClick={(e) => {navigate(`/product/${_id}`)}}>
             <CardMedia
                 component="img"
                 sx={{ width: { md: '32%', xs: '100%', sm: 150 }, height: { md: '100%', xs: 100, sm: 'auto' }, objectFit: 'contain' }}
@@ -50,6 +52,8 @@ const ResponsiveCard = ({ frontImage, name, products, exportMarkets, location })
 };
 
 const SearchCard = (item) => {
+
+
     console.log("in child ", item)
     return (
         <Grid container justifyContent="center">

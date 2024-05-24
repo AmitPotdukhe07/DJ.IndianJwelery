@@ -6,9 +6,12 @@ import { StyledButton, StyledButton1, StyledTextField } from '../style';
 import { Stack } from '@mui/system';
 import CardList2 from '../components/CardList2';
 import { CardList3 } from '../components/CardList3';
+
+
+
 function HomeScreen() {
     return (
-        <div>
+        <div style={{ overflowX: "hidden" }}>
             <Box mt={0}>
                 <CarouselComponent />
             </Box>
