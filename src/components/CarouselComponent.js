@@ -27,7 +27,7 @@ const CarouselComponent = () => {
                     backgroundImage: 'url("https://indiajewelleryhub.com/assets/images/banner/banner1.jpg")',
                     backgroundSize: 'cover',
                     backgroundPosition: 'center',
-                    height: 'auto',
+                    height: '50vh',
                     display: 'flex',
                     justifyContent: 'center',
                     alignItems: 'center',
@@ -60,13 +60,13 @@ const CarouselComponent = () => {
                     backgroundImage: 'url("https://indiajewelleryhub.com/assets/images/banner/banner2.jpg")',
                     backgroundSize: 'cover',
                     backgroundPosition: 'center',
-                    height: '50vh', // adjust the height as needed
+                    height: '50vh',
                     display: 'flex',
                     width: '100%',
                     justifyContent: 'center',
                     alignItems: 'center',
                     overflowY: 'hidden',
-                    color: 'white', // adjust text color if needed
+                    color: 'white',
                 }}>
                     <Grid item xs={6}>
                         <Typography variant="h2" align="center">
@@ -94,13 +94,13 @@ const CarouselComponent = () => {
                     backgroundImage: 'url("https://indiajewelleryhub.com/assets/images/banner/newbanner2.jpeg")',
                     backgroundSize: 'cover',
                     backgroundPosition: 'center',
-                    height: '50vh', // adjust the height as needed
+                    height: '50vh',
                     display: 'flex',
                     justifyContent: 'center',
                     alignItems: 'center',
                     overflowY: 'hidden',
                     width: '100%',
-                    color: 'white', // adjust text color if needed
+                    color: 'white',
                 }}>
                     <Grid item xs={6}>
                         <Typography variant="h2" align="center">
